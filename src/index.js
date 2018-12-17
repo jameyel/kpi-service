@@ -19,7 +19,8 @@ app.use(
 );
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/resthub');
+const mongo_uri = process.env.MONGODB_URI || 'mongodb://localhost/resthub';
+mongoose.connect(mongo_uri);
 const db = mongoose.connection;
 // Import routes
 const apiRoutes = require('./api-routes');
